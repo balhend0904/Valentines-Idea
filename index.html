@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>💖 Mi Valentine</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ffc0d9, #ffe6f0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Arial", sans-serif;
+        overflow: hidden;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 40px;
+        border-radius: 25px;
+        text-align: center;
+        width: 90%;
+        max-width: 450px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      h1 {
+        color: #ff4d88;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #555;
+        font-size: 18px;
+        line-height: 1.4;
+      }
+
+      .buttons {
+        margin-top: 30px;
+        position: relative;
+        height: 80px;
+      }
+
+      button {
+        padding: 12px 28px;
+        font-size: 18px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+      }
+
+      #yes {
+        background-color: #ff4d88;
+        color: white;
+        margin-right: 20px;
+      }
+
+      #no {
+        background-color: #b0b0b0;
+        color: white;
+        position: absolute;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 24px;
+        animation: float 3s linear forwards;
+      }
+
+      @keyframes float {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-300px);
+          opacity: 0;
+        }
+      }
+
+      img {
+        width: 220px;
+        margin: 20px 0;
+        border-radius: 15px;
+      }
+
+      .message {
+        font-size: 18px;
+        color: #ff4d88;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card" id="card">
+      <h1>Oyeee, mi Lin ❤️</h1>
+      <p>
+        Vieras que tengo una preguntaaa,<br />
+        como siempree jaja💕😌<br /><br />
+        ¿Quieres ser mi Valentine? 💘
+      </p>
+
+      <div class="buttons">
+        <button id="yes">Obviii 💕</button>
+        <button id="no">Naah 😳</button>
+      </div>
+
+      <!-- Contenido que aparece al decir que sí -->
+      <div id="yesContent" class="hidden">
+        <img
+          src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+          alt="cute gif"
+        />
+        <p class="message">
+          <!-- ✏️ AQUÍ ESCRIBES TU MENSAJE -->
+          Holiii, prometo que la pasaremos muy bonito juntoos. Quiero que sepas
+          que para mí es muy difícil no quererte como lo hago.💌
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const noBtn = document.getElementById("no");
+      const yesBtn = document.getElementById("yes");
+      const yesContent = document.getElementById("yesContent");
+      const buttons = document.querySelector(".buttons");
+
+      noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (buttons.offsetWidth - 80);
+        const y = Math.random() * (buttons.offsetHeight - 40);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+      });
+
+      yesBtn.addEventListener("click", () => {
+        buttons.classList.add("hidden");
+        yesContent.classList.remove("hidden");
+
+        setInterval(() => {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.innerText = "💗";
+          heart.style.left = Math.random() * window.innerWidth + "px";
+          heart.style.top = window.innerHeight + "px";
+          document.body.appendChild(heart);
+
+          setTimeout(() => heart.remove(), 3000);
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
